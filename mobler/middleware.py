@@ -39,7 +39,7 @@ class MobileDetectionMiddleware(object):
             if is_mobile and not do_override:
                 mobile_url = mobler_settings.MOBILE_DOMAIN
                 if mobler_settings.MOBLER_PRESERVE_URL:
-                    mobile_url = urlparse.urljoin(mobile_url, build_full_path(request))
+                    mobile_url = urlparse.urljoin(mobile_url, build_full_path(request)[1:])
                 return redirect(mobile_url)
 
             ## We might be mobile, so set a flag on the request for convenience.
